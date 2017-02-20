@@ -35,6 +35,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem "paperclip"
 
+gem "sorcery"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
