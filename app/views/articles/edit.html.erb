@@ -1,3 +1,10 @@
 <h1>Edit an Article</h1>
 
 <%= render partial: 'form' %>
+
+<% @article_months.sort.each do |pub, articles| %>
+  <h3><%= pub.strftime('%B') %></h3>
+  <% for article in articles %>
+    <%= link_to "#{article.title}", article_path(article) %>
+  <% end %>
+<% end %>

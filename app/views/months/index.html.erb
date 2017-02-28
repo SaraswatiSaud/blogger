@@ -1,0 +1,9 @@
+<h1>Articles of a month</h1>
+
+<% @article_days.each do |pub, articles| %>
+  <h3><%= pub.strftime('%e %A, %B %Y') %></h3>
+  <% for article in articles %>
+    <%= article.title %><br/>
+    <%= article.body %>
+  <% end %>
+<% end %>
