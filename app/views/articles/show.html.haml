@@ -1,0 +1,24 @@
+%h1= @article.title
+%p
+  - if @article.image.exists?
+    = image_tag @article.image.url
+%p= @article.body
+%p
+  Tags:
+  - @article.tags.each do |tag|
+    = link_to tag.name, tag_path(tag)
+%p
+  Views:
+  (#{@view_count = Article.count.size})
+%h3
+  Comments (#{@article.comments.size})
+= render partial: 'comments/form'
+.navbar
+  .ul.nav.navbar-nav
+    - if logged_in?
+      %li.nav-item
+        = link_to "<<Back to Articles List", articles_path
+      %li.nav-item
+        = link_to "delete", article_path(@article), method: :delete, data: {confirm: "Really delete the article?"}
+      %li.nav-item
+        = link_to "edit", edit_article_path(@article)

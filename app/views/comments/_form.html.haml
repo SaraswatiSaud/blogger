@@ -1,0 +1,17 @@
+%h3 Post a Comment
+
+= form_for [ @article, @comment] do |f|
+  .row.col-sm-8
+    .col-sm-4.form-group
+      = f.label :author_name, "Your Name"
+    .col-sm-6
+      = f.text_field :author_name, class: 'form-control'
+
+  .row.col-sm-8
+    .col-sm-4.form-group
+      = f.label :author_name, "Your Comment"
+    .col-sm-6
+      = f.text_area :body, class: 'form-control'
+
+  .row.col-sm-offset-0.form-group
+    .col-md-10= f.submit 'Submit', class: 'btn btn-primary'

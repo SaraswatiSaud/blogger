@@ -1,0 +1,36 @@
+.row
+  .col-sm-12
+    = form_for(@article, html: {multipart: true}) do |f|
+      - if @article.errors.present?
+        %ul.alert.alert-danger
+          - @article.errors.full_messages.each do |error|
+            %li= error
+        %br
+      .row
+        .col-sm-3.form-group
+          = f.label :title
+        .col-sm-6.form-group
+          = f.text_field :title, class: 'form-control', required: true
+
+      .row
+        .col-sm-3.form-group
+          = f.label :body
+        .col-sm-6.form-group
+          = f.text_area :body, rows: 10, class: 'form-control', required: true
+
+      .row
+        .col-sm-3.form-group
+          = f.label :tag_list
+        .col-sm-6.form-group
+          = f.text_field :tag_list, class: 'form-control'
+
+      .row
+        - if @article.image.exists?
+          = image_tag @article.image.url
+        .col-sm-3.form-group
+          = f.label :image, "Attach an Image"
+        .col-sm-6.form-group
+          = f.file_field :image
+
+      .row
+        .col-md-12= f.submit 'Submit', class: 'btn btn-primary'

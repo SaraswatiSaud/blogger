@@ -1,0 +1,10 @@
+%h1.form-group.col-sm-offset-4 Editing Author
+%br
+= render 'form', author: @author
+
+#navbar
+  %ul.nav.navbar-nav
+    %li.nav-item
+      = link_to 'Show', @author
+    %li.nav-item
+      = link_to 'Back', authors_path

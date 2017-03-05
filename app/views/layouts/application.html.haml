@@ -1,0 +1,37 @@
+!!!
+%html
+  %head
+    %title Blogger
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+
+  %body
+    .container
+      = render 'layouts/header'
+      -# = flash.messages.inspect
+      - if flash.keys.present?
+        - css = 'info'
+        - if flash.keys.include?('notice')
+          - css = 'success'
+        - elsif flash.keys.include?('alert')
+          - css = 'danger'
+
+        %div{class: "alert alert-#{css} alert-dismissable"}
+          %a.close{"aria-label" => "close", "data-dismiss" => 'css', :href => "#"} ×
+          = flash[flash.keys.first.to_sym]
+
+      .row
+        - if request.original_url == login_url
+          .col-sm-12= yield
+        - else
+          .col-sm-9= yield
+          .col-sm-3= render 'layouts/sidebar'
+
+      %footer
+        %hr
+        Copyright &copy; 2017.
+        = link_to 'About', '#'
+        |
+        = link_to 'Privacy Policy', '#'

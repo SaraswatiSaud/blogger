@@ -7,7 +7,6 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    
 
     @comment = Comment.new
     @comment.article_id = @article.id
@@ -19,12 +18,21 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    @article.save
-    redirect_to article_path(@article)
+    if @article.save
+      redirect_to article_path(@article), notice: 'Article Saved Successfully!'
+    else
+      render :new
+    end
   end
 
   def destroy
-
+    @article = Article.find(params[:id])
+    if @article.destroy
+      flash[:notice] = 'Article Deleted Successfully!'
+    else
+      flash[:alert] = 'Article cannot be deleted!'
+    end
+    redirect_to articles_path
   end
 
   def edit
@@ -39,6 +47,8 @@ class ArticlesController < ApplicationController
 
     redirect_to article_path(@article)
   end
+
+
 
 
 end

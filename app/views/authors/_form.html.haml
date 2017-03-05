@@ -1,0 +1,35 @@
+= form_for(author) do |f|
+  - if author.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(author.errors.count, 'error')
+        prohibited this author from being saved:
+      %ul
+        - author.errors.full_messages.each do |message|
+          %li= message
+  .row.col-sm-offset-1
+    .col-sm-2.form-group
+      = f.label :username
+    .col-sm-6
+      = f.text_field :username, placeholder: 'username', class: 'form-control', required: true
+
+  .row.col-sm-offset-1
+    .col-sm-2.form-group
+      = f.label :email
+    .col-sm-6
+      = f.text_field :email, placeholder: 'email', class: 'form-control', required: true
+
+  .row.col-sm-offset-1
+    .col-sm-2.form-group
+      = f.label :password
+    .col-sm-6
+      = f.password_field :password, placeholder: 'password', class: 'form-control', required: true
+
+  .row.col-sm-offset-1
+    .col-sm-2.form-group
+      = f.label :password_confirmation
+    .col-sm-6
+      = f.password_field :password_confirmation, placeholder: 'password_confirmation', class: 'form-control', required: true
+
+  .row.col-sm-offset-1
+    .col-sm-12.form-group= f.submit 'Submit', class: 'btn btn-primary'

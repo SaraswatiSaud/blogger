@@ -1,0 +1,18 @@
+%p#notice= notice
+.table-responsive
+  %table.table
+    %thead
+      %tr
+        %th Username
+        %th Email
+    %tbody
+      %tr
+        %td= @author.username
+        %td= @author.email
+
+#navbar
+  %ul.nav.navbar-nav
+    %li.nav-item
+      = link_to 'Edit', edit_author_path(@author)
+    %li.nav-item
+      = link_to 'Back', authors_path

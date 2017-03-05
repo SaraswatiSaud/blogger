@@ -1,0 +1,5 @@
+- @articles.each do |article|
+  %h1= link_to article.title, article_path(article)
+  %em= article.created_at.strftime("%Y-%m-%d %I:%m %p")
+  %div= article.body
+  %hr

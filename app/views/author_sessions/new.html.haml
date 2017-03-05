@@ -1,0 +1,19 @@
+.row
+  .col-sm-offset-3.col-sm-6
+    %h1.form-group.col-sm-offset-3 Login
+    %br
+    = form_tag author_sessions_path, method: :post do
+      .row
+        .col-sm-3.form-group
+          = label_tag :email
+        .col-sm-8.form-group
+          = text_field_tag :email, '', placeholder: 'Email', class: 'form-control'
+
+      .row
+        .col-sm-3.form-group
+          = label_tag :password
+        .col-sm-8.form-group
+          = password_field_tag :password, '', placeholder: 'Password', class: 'form-control'
+
+      .row
+        .col-md-12= submit_tag 'Login', class: 'btn btn-primary'

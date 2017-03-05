@@ -1,0 +1,18 @@
+%h1 Authors
+
+.table-responsive
+  %table.table
+    %thead
+      %tr
+        %th Username
+        %th Email
+        %th{:colspan => '3'}
+
+    %tbody
+      - @authors.each do |author|
+        %tr
+          %td= author.username
+          %td= author.email
+          %td= link_to 'Show', author
+          %td= link_to 'Edit', edit_author_path(author)
+          %td= link_to 'Destroy', author, method: :delete, data: { confirm: 'Are you sure?' }

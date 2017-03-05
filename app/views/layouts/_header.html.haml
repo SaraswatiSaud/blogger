@@ -1,0 +1,19 @@
+%nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      = link_to 'Blogger', root_path, class: 'navbar-brand'
+    #navbar.navbar-collapse.collapse
+      %ul.nav.navbar-nav.navbar-right
+        - if logged_in?
+          %li.nav-item
+            = link_to 'New Author', new_author_path
+          %li.nav-item
+            = link_to 'New Article', new_article_path
+          %li.nav-item
+            = link_to "Logged in as #{current_user.email}", 'javascript:void(0);'
+          %li.nav-item
+            = link_to 'Logout', logout_path
+
+        - unless logged_in?
+          %li.nav-item
+            = link_to 'Login', login_path

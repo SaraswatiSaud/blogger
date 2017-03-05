@@ -1,0 +1,14 @@
+%h1
+  Articles Tagged with #{@tag.name}
+%ul
+  - @tag.articles.each do |article|
+    %li= link_to article.title, article_path(article)
+#navbar
+  %ul.nav.navbar-nav
+    - if logged_in?
+      %li.nav-item
+        = link_to "<<Back to Tags List", tags_path
+      %li.nav-item
+        = link_to "Delete", article_path(@tag), method: :delete, data: {confirm: "Really delete the tag?"}
+      %li.nav-item
+        = link_to "Edit", edit_article_path(@tag)
